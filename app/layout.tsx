@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Cardo } from "next/font/google";
+import {Merriweather  } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/footer";
 
-const inter = Inter({ subsets:  ["greek", "latin"] });
-// const cardo = Cardo({weight: "400", subsets:["greek", "greek-ext", "latin"]})
+const merriWeather = Merriweather({ subsets: ['cyrillic', 'cyrillic-ext', 'latin', 'latin-ext', 'vietnamese'],
+weight: ['300', '400', '700', '900']  });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,8 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" >
+      <body className={`${merriWeather.className} `}>
+        <main className="min-h-screen flex-col justify-center items-center">
+        <Navbar />
+        {children}
+        <Footer/>
+        </main>
+        </body>
     </html>
   );
 }
